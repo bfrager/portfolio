@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/bfrager/portfolio/issues"
   },
-  "homepage": "https://github.com/bfrager/portfolio#readme"
+  "homepage": "https://github.com/bfrager/portfolio#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-ejs-layouts": "^2.0.0",
+    "fs": "0.0.2",
+    "morgan": "^1.6.1"
+  }
 }
