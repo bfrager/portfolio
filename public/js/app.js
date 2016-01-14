@@ -6,7 +6,7 @@
 
     function setWidth() {
 
-        winWidth = $(window).innerWidth(); //This may need to be width()	
+        winWidth = $(window).innerWidth(); //This may need to be width()
         socialHeight = (winWidth > 640) ? 120 : 160;
 
     }
@@ -149,7 +149,7 @@
             } // onInit
         });
 
-        //Video Wallpaper Settings - alter the URL's to your converted videos		
+        //Video Wallpaper Settings - alter the URL's to your converted videos
         $("#video_element").wallpaper({
             source: {
                 mp4: "videos/clouds2.mp4",
@@ -224,7 +224,7 @@
             pagination: true,
             paginationNumbers: false,
 
-            // Responsive 
+            // Responsive
             responsive: true,
             responsiveRefreshRate: 200,
             responsiveBaseWidth: window,
@@ -241,7 +241,7 @@
             //Auto height
             autoHeight: true,
 
-            //JSON 
+            //JSON
             jsonPath: false,
             jsonSuccess: false,
 
@@ -271,71 +271,71 @@
 
         //Contact Form
         $(document).on('submit', 'form#contact_form', function (e) {
-        
+
             e.preventDefault();
-        
+
             $('form#contact_form .error').remove();
-        
+
             var hasError = false;
-        
+
             $('.requiredField').each(function () {
-        
+
                 if ($.trim($(this).val()) == '') {
-        
+
                     var labelText = $(this).prev('label').text();
-        
+
                     $(this).parent().append('<span class="error">Please complete the required fields.</span>');
-        
+
                     $(this).addClass('inputError');
-        
+
                     hasError = true;
-        
+
                 } else if ($(this).hasClass('email')) {
-        
+
                     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        
+
                     if (!emailReg.test($.trim($(this).val()))) {
-        
+
                         var labelText = $(this).prev('label').text();
-         
+
 						$(this).parent().append('<span class="error">You entered an invalid email</span>');
-                 
+
                         $(this).addClass('inputError');
-                 
+
                         hasError = true;
-                 
+
                     }
-                
+
                 }
-            
+
             });
-            
+
             if (!hasError) {
-            
+
                 $('form#contact_form input.submit').fadeOut('normal', function () {
-            
+
                     $(this).parent().append('');
-            
+
                 });
-            
+
                 var formInput = $(this).serialize();
-            
+
                 $.post($(this).attr('action'), formInput, function (data) {
-            
+
                     $('form#contact_form').slideUp("fast", function () {
-            
+
                         $(this).before('<p class="success">Thank you! Your email was successfully sent. I will contact you as soon as possible.</p>');
-            
+
                     });
-            
+
                 });
-            
+
             }
 
             return false;
 
         });
-        
+
         new WOW().init();
     });
 
